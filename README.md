@@ -38,7 +38,7 @@ HLS:  `http://[yggdrasil_ipv6]:8888/mystream/`
 
 ## Приём чата трансляции.
 
-Для простого чата можно использовать https://github.com/Flynsarmy/PHPWebSocket-Chat
+Для простого чата можно использовать https://github.com/Flynsarmy/PHPWebSocket-Chat  
 Если у вас старый PHP из комплекта DeNWeR, в нём отсутствует файл php_sockets.dll. Скачать его можно на https://www.pconlife.com/viewfileinfo/php-sockets-dll/ (следует соблюдать версию и разрядность при выборе нужного файла). Также следует раскомментировать (убрать точку с запятой) строку `;extension=php_sockets.dll` в php.ini  
 Чтобы зрители стрима могли открывать чат по вашему внешнему IP в Yggdrasil, нужно либо дать им HTML-файл со страницей чата (в javascript которой вписан IP-адрес слушателя websocket, то есть PHP-бекенда чата), либо сделать этот HTML файл доступным по внешнему IP при помощи web-сервера, например Nginx.  
 В PHPWebSocket-Chat этот адрес указан в файле index.html, в строке  
