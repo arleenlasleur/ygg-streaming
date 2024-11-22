@@ -11,6 +11,7 @@
   #nojsdiv{text-shadow:-1px -1px 0 #448,1px -1px 0 #448,-1px 1px 0 #448,1px 1px 0 #448;
       position:fixed; bottom:15px; left:15px; color:#ccf; font:14pt arial; font-weight:bold;}
   #nojsdiv a{text-decoration:none;}
+  #nojsdiv a:link{color:inherit;}
   #nojsdiv a:visited{color:inherit;}
   #playpaus{cursor:pointer;}
  </style>

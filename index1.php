@@ -1,7 +1,8 @@
 <?php
 $we = $_SERVER["PHP_SELF"];
 $latest_filename = "";
-$path = "../yggstream/*.jpg";
+$path = "*.jpg";
+//$path = "../yggstream/*.jpg";
 $latest_ctime = 0;
 $files = glob($path);
 foreach($files as $file){
@@ -10,7 +11,7 @@ foreach($files as $file){
       $latest_filename = $file;
    }
 }
-$latest_filename = str_replace("../yggstream/","",$latest_filename);
+//$latest_filename = str_replace("../yggstream/","",$latest_filename);
 if(isset($_GET["file"])){
    echo $latest_filename;
 }else{
