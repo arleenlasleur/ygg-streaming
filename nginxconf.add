@@ -1,0 +1,20 @@
+    server {
+        listen     1995;
+        listen     [::]:1995;
+        server_name  arleenart;
+        location / {
+            root   yggstream;
+            index  index.html index.htm index.php;
+        }
+        error_page   500 502 503 504  /50x.html;
+        location = /50x.html {
+            root   html;
+        }
+        location ~ \.php$ {
+            root           html2;
+            fastcgi_pass   127.0.0.1:9000;
+            fastcgi_index  index2.php;
+            fastcgi_param  SCRIPT_FILENAME  /scripts$fastcgi_script_name;
+            include        fastcgi_params;
+        }
+    }

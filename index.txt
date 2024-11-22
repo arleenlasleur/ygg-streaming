@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+<head>
+ <style>
+  *{margin:0; padding:0;overflow:hidden;}
+  body{background-color:#94919d;}
+  #img_wr{position:relative;}
+  img{width:800px;height:600px;display:inline-block;pointer-events:none;
+      position:absolute;top:0;left:0;}
+  #nojslink{text-shadow:-1px -1px 0 #448,1px -1px 0 #448,-1px 1px 0 #448,1px 1px 0 #448;
+      text-decoration:none;color:#aaf;}
+  #nojsdiv{position:fixed;bottom:15px;left:15px;}
+ </style>
+ <title>Imgseq stream</title>
+ <meta http-equiv="Cache-control" contents="no-cache" />
+ <meta http-equiv="Expires" contents="0" />
+ <meta http-equiv="Pragma" contents="no-cache" />
+</head>
+<body>
+<div id="img_wr"></div>
+<div id="nojsdiv"><b><a href="index2.php" id="nojslink">NoJS version (blinking)</a></b></div>
+</body>
+<script>
+var xhr=new XMLHttpRequest;
+var new_src,last_src;
+
+function img_load(){
+   var new_image = document.createElement("img");
+   new_image.setAttribute("src", new_src);
+   new_image.height = 800;
+   new_image.width = 600;
+   document.getElementById("img_wr").appendChild(new_image);  
+}
+
+function img_delete(){
+   list = document.getElementById("img_wr").getElementsByTagName("img");
+   if(list.length < 2) return;
+   for(i=0; i<list.length-2; i++) list[i].remove();
+}
+
+function img_fetch(){
+   xhr.open("GET", "{{PHP_WE}}?file&r=" + Math.random(),true);
+   xhr.send();
+}
+
+xhr.onreadystatechange=function(){
+  if(xhr.readyState!=4 || xhr.status!=200) return;
+  new_src = xhr.responseText;
+  if(new_src == last_src) return;
+  img_load();
+  img_delete();
+};
+
+document.addEventListener("DOMContentLoaded",function(){
+  img_fetch(); setInterval(function(){ img_fetch(); },2000);
+});
+</script>
+</html>
